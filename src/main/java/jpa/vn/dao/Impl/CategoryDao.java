@@ -12,7 +12,9 @@ import java.util.List;
 public class CategoryDao implements jpa.vn.dao.ICategoryDao {
     @Override
     public void insertCategory(Category category) {
+
         EntityManager enma = JPAConfig.getEntityManager();
+
         EntityTransaction trans = enma.getTransaction();
 
         try {
@@ -40,13 +42,14 @@ public class CategoryDao implements jpa.vn.dao.ICategoryDao {
         EntityTransaction trans = enma.getTransaction();
 
         try {
-
             trans.begin();
             enma.merge(category);
             trans.commit();
         } catch (Exception e) {
             e.printStackTrace();
             if (trans.isActive()) {
+
+                // nếu có lỗi thì rollback
                 trans.rollback();
             }
             throw e;
@@ -64,11 +67,11 @@ public class CategoryDao implements jpa.vn.dao.ICategoryDao {
         EntityTransaction trans = enma.getTransaction();
 
         try {
-
             trans.begin();
             Category category = enma.find(Category.class, cateid);
             trans.commit();
             if(category != null) {
+                enma.merge(category);
                 enma.remove(category);
             }
             else {
@@ -107,12 +110,14 @@ public class CategoryDao implements jpa.vn.dao.ICategoryDao {
         EntityManager enma = JPAConfig.getEntityManager();
         String jpql = "SELECT c FROM Category c WHERE c.categoryname = :categoryName";
         TypedQuery<Category> query = enma.createQuery(jpql, Category.class);
-        query.setParameter("categoryName", categoryName);
+        query.setParameter("categoryName", "%" + categoryName + "%");
         return query.getResultList();
     }
 
     @Override
     public List<Category> findAll(int page, int pagesize) {
+
+        // Phân trang
         EntityManager enma = JPAConfig.getEntityManager();
         TypedQuery<Category> query= enma.createNamedQuery("Category.findAll", Category.class);
         query.setFirstResult(page*pagesize);

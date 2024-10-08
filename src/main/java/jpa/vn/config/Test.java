@@ -5,7 +5,8 @@ import jpa.vn.entity.Category;
 
 public class Test {
     public static void main(String[] args) {
-// Tạo EntityManager từ cấu hình JPA
+
+        // Tạo EntityManager từ cấu hình JPA
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
 
@@ -14,9 +15,7 @@ public class Test {
             trans.begin();
 
             // Thực hiện các thao tác với cơ sở dữ liệu ở đây
-            // Ví dụ: enma.persist(entity);
-
-            // Cam kết giao dịch
+            // insert, update, delete
             trans.commit();
         } catch (Exception e) {
             // Xử lý lỗi
