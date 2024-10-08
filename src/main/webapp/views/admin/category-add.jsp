@@ -13,8 +13,8 @@
 </head>
   <body>
     <form action="<c:url value = "/admin/category/insert"/>" method="post" enctype="multipart/form-data">
-      <!-- <c:if test = "${alterMsg != null}"> </c:if> -->
-      <h3 class="alter alter danger"> ${alterMsg}</h3>
+      <!-- <c:if test = "${alterMsg != null}"> <h3 class="alter alter danger"> ${alterMsg}</h3> </c:if> -->
+
       <label for="categoryname">Category name:</label><br>
       <input type="text" id="categoryname" name="categoryname" value=""><br>
 

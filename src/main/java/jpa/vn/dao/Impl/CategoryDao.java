@@ -71,7 +71,7 @@ public class CategoryDao implements jpa.vn.dao.ICategoryDao {
             Category category = enma.find(Category.class, cateid);
             trans.commit();
             if(category != null) {
-                enma.merge(category);
+                //enma.merge(category);
                 enma.remove(category);
             }
             else {
@@ -101,8 +101,13 @@ public class CategoryDao implements jpa.vn.dao.ICategoryDao {
     @Override
     public List<Category> findAll() {
         EntityManager enma = JPAConfig.getEntityManager();
-        TypedQuery<Category> query = enma.createNamedQuery("Category.findAll", Category.class);
-        return query.getResultList();
+//        TypedQuery<Category> query = enma.createNamedQuery("Category.findAll", Category.class);
+//        return query.getResultList();
+
+        String query = "SELECT c FROM Category c";
+        TypedQuery<Category> q = enma.createQuery(query, Category.class);
+        return q.getResultList();
+
     }
 
     @Override

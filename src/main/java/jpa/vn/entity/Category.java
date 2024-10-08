@@ -15,7 +15,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
+@NamedQuery(name = "Category.findAll", query="SELECT c FROM Category c")
+
 public class Category  implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
     @Id

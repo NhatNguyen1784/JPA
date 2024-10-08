@@ -6,12 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="/common/taglib.jsp" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <a href="<c:url value = "/admin/category/add"/>">Add category</a>
 <table>
     <tr>
         <th>STT</th>
-        <th>Image</th>
+        <th>image</th>
         <th>Category name</th>
         <th>Status</th>
         <th>Action</th>
