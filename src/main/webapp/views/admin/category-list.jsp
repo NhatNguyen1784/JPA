@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <a href="<c:url value = "/admin/category/add"/>">Add category</a>
+<br>
+<a href="<c:url value = "/admin/videos"/>">Video list</a>
 <table>
     <tr>
         <th>STT</th>
@@ -36,9 +38,6 @@
 
                 <a href="<c:url value='/admin/category/delete?id=${cate.categoryid}'/>"
                    class="center">Xóa</a>
-
-                <a href="<c:url value='/admin/videos?id=${cate.categoryid}'/>"
-                   class="center">Video</a>
             </td>
         </tr>
     </c:forEach>

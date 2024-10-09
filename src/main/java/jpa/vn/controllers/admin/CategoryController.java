@@ -154,7 +154,7 @@ public class CategoryController extends HttpServlet implements Serializable {
             categoryService.updateCategory(category);
 
             // tra ve view
-            resp.sendRedirect(req.getContextPath() + "/admin/categories");
+            resp.sendRedirect(req.getContextPath() + "/admi");
         }
     }
 }

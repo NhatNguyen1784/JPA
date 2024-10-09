@@ -10,18 +10,20 @@
 
 <html>
 <head>
-    <title>Videos</title>
+    <title>Video-list</title>
 </head>
 <body>
-<a href="<c:url value = "/admin/video/add"/>">Add category</a>
+<a href="<c:url value = "/admin/video/add"/>">Add video</a>
 <table>
     <tr>
         <th>STT</th>
         <th>Title</th>
         <th>Poster</th>
         <th>Description</th>
-        <th>Active</th>
         <th>Views</th>
+        <th>Category</th>
+        <th>Active</th>
+        <th>Action</th>
     </tr>
     <c:forEach items="${videoList}" var="vid" varStatus="STT">
         <tr class="odd gradeX">
@@ -30,14 +32,18 @@
             <td>${vid.title}</td>          <%-- title --%>
 
             <c:if test="${vid.poster.substring(0,5) == 'https'}">
-                <c:url value="${cate.poster}" var="imgUrl"></c:url>
+                <c:url value="${vid.poster}" var="imgUrl"></c:url>
             </c:if>
-            <c:if test="${cate.poster.substring(0,5) != 'https'}">
-                <c:url value="/image?fname=${cate.poster}" var="imgUrl"></c:url>
+            <c:if test="${vid.poster.substring(0,5) != 'https'}">
+                <c:url value="/image?fname=${vid.poster}" var="imgUrl"></c:url>
             </c:if>
             <td><img height="150" width="200" src="${imgUrl}"/></td> <%-- poster --%>
 
             <td>${vid.description}</td>   <%-- description --%>
+
+            <td>${vid.views}</td>     <%-- views --%>
+
+            <td>${vid.category.categoryname}</td>     <%-- category --%>
 
             <c:if test="${vid.active == 1}">    <%-- active --%>
                 <td>Hoạt động</td>
@@ -46,15 +52,13 @@
                 <td>Không hoạt động</td>
             </c:if>
             <td>
-                <a href="<c:url value='/admin/video/edit?id=${vid.videoId}'/>"
+                <a href="<c:url value='/admin/video/edit?videoId=${vid.videoId}'/>"
                    class="center">Sửa</a>
 
-                <a href="<c:url value='/admin/video/delete?id=${vid.videoId}'/>"
+                <a href="<c:url value='/admin/video/delete?videoId=${vid.videoId}'/>"
                    class="center">Xóa</a>
-
             </td>
 
-            <td>${vid.views}</td>     <%-- views --%>
         </tr>
     </c:forEach>
 

@@ -120,4 +120,5 @@ public class VideoDao implements jpa.vn.dao.IVideoDao {
         return query.getResultList();
 
     }
+
 }
