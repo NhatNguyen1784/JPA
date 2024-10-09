@@ -52,6 +52,9 @@ public class VideoController extends HttpServlet implements Serializable {
             req.setAttribute("categoryList", categoryList);
             req.getRequestDispatcher("/views/admin/video-add.jsp").forward(req, resp);
         }
+        else if (url.contains("edit")){
+            req.getRequestDispatcher("/admin/video-edit.jsp").forward(req, resp);
+        }
     }
 
     @Override
@@ -60,6 +63,7 @@ public class VideoController extends HttpServlet implements Serializable {
         resp.setCharacterEncoding("UTF-8");
 
         String url = req.getRequestURI();
+
         if (url.contains("insert")){
 
             // lay du lieu tu form
@@ -122,10 +126,8 @@ public class VideoController extends HttpServlet implements Serializable {
             // goi insert
             videoService.insertVideo(video);
 
-            System.out.println(cateid);
-
             // tra ve view
-            req.getRequestDispatcher("/views/admin/video-list.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/admin/videos");
         }
     }
 }

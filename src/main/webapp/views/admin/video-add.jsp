@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <title>video-add</title>
+    <title>Video-add</title>
 </head>
 <body>
 <form action="<c:url value = "/admin/video/insert"/>" method="post" enctype="multipart/form-data">
