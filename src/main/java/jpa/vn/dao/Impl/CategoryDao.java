@@ -68,15 +68,18 @@ public class CategoryDao implements jpa.vn.dao.ICategoryDao {
 
         try {
             trans.begin();
+
             Category category = enma.find(Category.class, cateid);
-            trans.commit();
+
             if(category != null) {
-                //enma.merge(category);
                 enma.remove(category);
             }
             else {
                 throw new RuntimeException("Category not found");
             }
+
+            trans.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
             if (trans.isActive()) {
