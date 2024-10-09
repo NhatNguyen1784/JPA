@@ -52,7 +52,7 @@ public class VideoDao implements jpa.vn.dao.IVideoDao {
     }
 
     @Override
-    public void deleteVideo(int vidId) {
+    public void deleteVideo(String vidId) {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
         try{
@@ -89,7 +89,7 @@ public class VideoDao implements jpa.vn.dao.IVideoDao {
     }
 
     @Override
-    public Video findById(int vidId) {
+    public Video findById(String vidId) {
         EntityManager enma = JPAConfig.getEntityManager();
 
         Video vid = enma.find(Video.class, vidId);

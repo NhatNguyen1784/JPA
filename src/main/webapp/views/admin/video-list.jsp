@@ -52,7 +52,7 @@
                 <td>Không hoạt động</td>
             </c:if>
             <td>
-                <a href="<c:url value='/admin/video/edit?videoId=${vid.videoId}'/>"
+                <a href="<c:url value='/admin/video/edit?videoId=${vid.videoId}&categoryId=${vid.category.categoryid}'/>"
                    class="center">Sửa</a>
 
                 <a href="<c:url value='/admin/video/delete?videoId=${vid.videoId}'/>"

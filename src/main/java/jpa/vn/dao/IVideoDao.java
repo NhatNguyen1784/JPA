@@ -9,11 +9,11 @@ public interface IVideoDao {
 
     void updateVideo(Video video);
 
-    void deleteVideo(int vidId);
+    void deleteVideo(String vidId);
 
     List<Video> findAll();
 
-    Video findById(int vidId);
+    Video findById(String vidId);
 
     int count();
 

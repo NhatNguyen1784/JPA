@@ -22,7 +22,7 @@ public class VideoService implements IVideoService {
     }
 
     @Override
-    public void deleteVideo(int vidId) {
+    public void deleteVideo(String vidId) {
         videoDao.deleteVideo(vidId);
     }
 
@@ -32,7 +32,7 @@ public class VideoService implements IVideoService {
     }
 
     @Override
-    public Video findById(int vidId) {
+    public Video findById(String vidId) {
         return videoDao.findById(vidId);
     }
 
