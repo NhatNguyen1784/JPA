@@ -64,6 +64,11 @@ public class VideoController extends HttpServlet implements Serializable {
             req.setAttribute("categoryList", categoryList);
             req.getRequestDispatcher("/views/admin/video-edit.jsp").forward(req, resp);
         }
+        else if (url.contains("delete")){
+            String videoId = req.getParameter("videoId");
+            videoService.deleteVideo(videoId);
+            resp.sendRedirect(req.getContextPath() + "/admin/videos");
+        }
     }
 
     @Override
@@ -190,7 +195,7 @@ public class VideoController extends HttpServlet implements Serializable {
                 else {
 
                     // neu khong chon file nao thi tai len file mac đinh
-                    video.setPoster("avatar.png");
+                    video.setPoster("dodg.jpg");
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
