@@ -9,8 +9,9 @@ import jpa.vn.entity.Video;
 
 import java.util.List;
 
-public class VideoDao {
+public class VideoDao implements jpa.vn.dao.IVideoDao {
 
+    @Override
     public void insertVideo(Video video) {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
@@ -30,6 +31,7 @@ public class VideoDao {
         }
     }
 
+    @Override
     public void updateVideo(Video video) {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
@@ -49,6 +51,7 @@ public class VideoDao {
         }
     }
 
+    @Override
     public void deleteVideo(int vidId) {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
@@ -75,6 +78,7 @@ public class VideoDao {
 
     }
 
+    @Override
     public List<Video> findAll(){
         EntityManager enma = JPAConfig.getEntityManager();
 
@@ -84,6 +88,7 @@ public class VideoDao {
 
     }
 
+    @Override
     public Video findById(int vidId) {
         EntityManager enma = JPAConfig.getEntityManager();
 
@@ -92,6 +97,7 @@ public class VideoDao {
         return vid;
     }
 
+    @Override
     public int count(){
         EntityManager enma = JPAConfig.getEntityManager();
 
@@ -100,6 +106,7 @@ public class VideoDao {
         return ((Long)query.getSingleResult()).intValue();
     }
 
+    @Override
     public List<Video> findByCateId(int cateId) {
 
         EntityManager enma = JPAConfig.getEntityManager();
